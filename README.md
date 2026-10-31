@@ -74,6 +74,36 @@ Use `.claude/` inside a repo instead of `~/.claude/` to scope it to one project.
 
 For smaller jobs you can skip the template. Say "load the team-lead skill and run this as the lead" and describe the work.
 
+## Example
+
+An illustrative run, shortened. It isn't a real transcript; it shows the shape of each stop.
+
+**You:**
+
+> Load the team-lead skill and run this as the lead. Add CSV export to the orders page. Spec: `docs/csv-export.md` (6 ACs). Repo `shop-api` on branch `csv-export`. Project rule: never select an order by its number for a write; use the id.
+
+**Lead, first stop (inventory and plan, after Fable's plan review):**
+
+> **Status:** Epic 1, CSV export. Slices: 0 of 3 done.
+>
+> | Slice | ACs | Files | Done when |
+> |---|---|---|---|
+> | 1. Export endpoint | AC1–AC3 | new `routes/export.ts`, new test | 3 scenario tests pass |
+> | 2. Date and currency formatting | AC4 | new `lib/csvFormat.ts`, new test | matches the spec's sample file byte for byte |
+> | 3. Button on the orders page | AC5–AC6 | `pages/orders.tsx` (existing, written by someone else) | Cypress journey passes |
+>
+> **Fable's verdict on the plan:** ACCEPT WITH FIXES. Slice 3 edits a file someone else owns, so it moves beside it as a new component.
+>
+> **Two calls for you:**
+> 1. The spec doesn't say whether cancelled orders are exported. Include them with a status column **(recommended, Fable's)**, or leave them out?
+> 2. Large exports: stream the file **(recommended, mine)**, or cap it at 10,000 rows?
+>
+> **Defaults list (approve all at once):** UTF-8 with a BOM so Excel opens it; file name `orders-YYYY-MM-DD.csv`.
+
+**You:** `1 include, 2 stream, defaults approved.`
+
+From there the lead briefs one Sonnet engineer per slice, audits each batch itself, takes the finished set to Fable, and shows you a diff before any existing file changes. At the end of the epic you get the diffs, the test output and Fable's cold-review verdict. Then you commit.
+
 ## Make it yours
 
 - **Project rules.** The skill has a `Project rules` section with examples. Put your own in your project's `CLAUDE.md` or in the kickoff prompt, each as a bold rule followed by a one-line *Why*. Rules that came from real incidents are the most useful.
