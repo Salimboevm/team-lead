@@ -1,0 +1,13 @@
+{
+  "name": "team-lead",
+  "owner": {
+    "name": "COPYRIGHT_HOLDER"
+  },
+  "plugins": [
+    {
+      "name": "team-lead",
+      "source": "./",
+      "description": "A multi-agent build protocol for Claude Code: an Opus lead plans and audits, a Fable reviewer audits the lead, Sonnet engineers build, and the human decides everything."
+    }
+  ]
+}

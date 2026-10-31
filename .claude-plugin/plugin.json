@@ -1,0 +1,12 @@
+{
+  "name": "team-lead",
+  "version": "1.0.0",
+  "description": "A multi-agent build protocol for Claude Code: an Opus lead plans and audits, a Fable reviewer audits the lead, Sonnet engineers build, and the human decides everything.",
+  "author": {
+    "name": "COPYRIGHT_HOLDER"
+  },
+  "homepage": "https://github.com/OWNER/team-lead",
+  "repository": "https://github.com/OWNER/team-lead",
+  "license": "MIT",
+  "keywords": ["claude-code", "multi-agent", "subagents", "code-review", "project-management", "skills"]
+}
