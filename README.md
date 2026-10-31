@@ -53,6 +53,8 @@ In Claude Code:
 /plugin install team-lead@team-lead
 ```
 
+Installed this way, the agents show up as `team-lead:fable-reviewer` and `team-lead:sonnet-engineer`, and the skill as `team-lead:team-lead`.
+
 ### By hand
 
 Copy the files into your user or project Claude folder:
