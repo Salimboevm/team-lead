@@ -13,9 +13,9 @@ flowchart TB
     F["<b>fable-reviewer</b> · C-suite<br/>audits plans, finished sets,<br/>high-stakes calls, epic-end cold review"]
     L["<b>Lead</b> · main session on Opus<br/>skill: team-lead<br/>plans, briefs, audits, keeps status"]
     S["<b>sonnet-engineer</b> · the team<br/>builds one brief at a time,<br/>runs real checks, reports everything"]
-    L -- "judgment calls, two at a time,<br/>with a recommendation" --> H
-    L -- "loop 2: finished sets for review" --> F
+    H -- "decides every judgment call<br/>(brought two at a time,<br/>with a recommendation)" --> L
     F -- "findings and questions" --> L
+    L -- "loop 2: finished sets for review" --> F
     L -- "loop 1: one brief per slice" --> S
     S -- "report and check output" --> L
 ```
