@@ -7,25 +7,17 @@ A multi-agent build protocol for [Claude Code](https://claude.com/claude-code). 
 - **Sonnet** engineers build. Each one carries out one self-contained brief and reports back.
 - **You** decide everything. Every judgment call comes to you, two at a time, with a recommendation.
 
-```
-            You (decide, commit)
-                   ▲
-     decisions, two at a time, with a recommendation
-                   │
-   ┌───────────────┴───────────────┐
-   │  fable-reviewer (C-suite)     │  audits the lead: plans, finished sets,
-   │  model: fable                 │  high-stakes calls, epic-end cold review
-   └───────────────▲───────────────┘
-                   │ loop 2
-   ┌───────────────┴───────────────┐
-   │  Lead (main session, Opus)    │  plans, briefs, audits, keeps status
-   │  skill: team-lead             │
-   └───────────────▲───────────────┘
-                   │ loop 1
-   ┌───────────────┴───────────────┐
-   │  sonnet-engineer (team)       │  builds one brief at a time,
-   │  model: sonnet                │  runs real checks, reports everything
-   └───────────────────────────────┘
+```mermaid
+flowchart TB
+    H["<b>You</b><br/>decide everything, commit the code"]
+    F["<b>fable-reviewer</b> · C-suite<br/>audits plans, finished sets,<br/>high-stakes calls, epic-end cold review"]
+    L["<b>Lead</b> · main session on Opus<br/>skill: team-lead<br/>plans, briefs, audits, keeps status"]
+    S["<b>sonnet-engineer</b> · the team<br/>builds one brief at a time,<br/>runs real checks, reports everything"]
+    L -- "judgment calls, two at a time,<br/>with a recommendation" --> H
+    L -- "loop 2: finished sets for review" --> F
+    F -- "findings and questions" --> L
+    L -- "loop 1: one brief per slice" --> S
+    S -- "report and check output" --> L
 ```
 
 ## What's in the box
@@ -57,7 +49,7 @@ A multi-agent build protocol for [Claude Code](https://claude.com/claude-code). 
 In Claude Code:
 
 ```
-/plugin marketplace add OWNER/team-lead
+/plugin marketplace add Salimboevm/team-lead
 /plugin install team-lead@team-lead
 ```
 
@@ -66,7 +58,7 @@ In Claude Code:
 Copy the files into your user or project Claude folder:
 
 ```bash
-git clone https://github.com/OWNER/team-lead.git
+git clone https://github.com/Salimboevm/team-lead.git
 mkdir -p ~/.claude/skills ~/.claude/agents
 cp -R team-lead/skills/team-lead ~/.claude/skills/
 cp team-lead/agents/*.md ~/.claude/agents/
