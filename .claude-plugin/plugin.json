@@ -7,6 +7,10 @@
   },
   "homepage": "https://github.com/Salimboevm/team-lead",
   "repository": "https://github.com/Salimboevm/team-lead",
+  "documentationUrl": "https://github.com/Salimboevm/team-lead#readme",
+  "supportUrl": "https://github.com/Salimboevm/team-lead/issues",
+  "privacyPolicyUrl": "https://github.com/Salimboevm/team-lead/blob/main/PRIVACY.md",
+  "termsOfServiceUrl": "https://github.com/Salimboevm/team-lead/blob/main/TERMS.md",
   "license": "MIT",
   "keywords": ["claude-code", "multi-agent", "subagents", "code-review", "project-management", "skills"]
 }
